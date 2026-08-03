@@ -1,0 +1,370 @@
+.star {
+
+    position: absolute;
+
+    width: 2px;
+
+    height: 2px;
+
+    background: #fff4c2;
+
+    border-radius: 50%;
+
+    opacity: .7;
+
+    animation: twinkle 3s infinite;
+
+}
+
+@keyframes twinkle {
+
+    0%,
+    100% {
+
+        opacity: .2;
+
+    }
+
+    50% {
+
+        opacity: 1;
+
+    }
+
+}
+
+/*==================================
+    MOON BUTTON
+==================================*/
+.coffee-name {
+
+    position: relative;
+
+    opacity: 0;
+
+    animation:
+        coffeeMoonRise 2s ease forwards;
+
+}
+
+
+@keyframes coffeeMoonRise {
+
+
+    0% {
+
+        opacity: 0;
+
+        transform:
+            translateY(25px);
+
+        text-shadow:
+            0 0 0 transparent;
+
+    }
+
+
+    50% {
+
+        opacity: 0.7;
+
+    }
+
+
+    100% {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+
+
+        text-shadow:
+            0 0 12px rgba(255, 220, 140, 0.5);
+
+    }
+
+}
+
+.arrival {
+
+
+    font-size: 14px;
+
+    letter-spacing: 4px;
+
+    color: #8b7658;
+
+    opacity: 0;
+
+
+    animation:
+        arrivalText 1.5s ease 0.8s forwards;
+
+
+}
+
+
+
+@keyframes arrivalText {
+
+
+    from {
+
+        opacity: 0;
+
+    }
+
+
+    to {
+
+        opacity: 1;
+
+    }
+
+
+}
+
+/*==================================
+    Arrival
+==================================*/
+
+.arrival {
+
+
+    font-size: 14px;
+
+    letter-spacing: 4px;
+
+    color: #8b7658;
+
+    opacity: 0;
+
+
+    animation:
+        arrivalText 1.5s ease 0.8s forwards;
+
+
+}
+
+
+
+@keyframes arrivalText {
+
+
+    from {
+
+        opacity: 0;
+
+    }
+
+
+    to {
+
+        opacity: 1;
+
+    }
+
+
+}
+
+/*==================================
+    Card Appear
+==================================*/
+
+/*==================================
+    Ver10 珈琲カード召喚演出
+==================================*/
+
+
+.card.summon {
+
+    opacity: 0;
+
+    transform:
+        translateY(40px) scale(0.95);
+
+    animation:
+        cardAppear 2s ease forwards;
+
+}
+
+
+/* カード出現 */
+
+@keyframes cardAppear {
+
+
+    0% {
+
+        opacity: 0;
+
+        transform:
+            translateY(40px) scale(0.95);
+
+        filter:
+            brightness(0.3);
+
+    }
+
+
+    50% {
+
+        filter:
+            brightness(1.4);
+
+    }
+
+
+    100% {
+
+        opacity: 1;
+
+        transform:
+            translateY(0) scale(1);
+
+        filter:
+            brightness(1);
+
+    }
+
+}
+
+
+
+/* 月光 */
+
+.card.summon::before {
+
+
+    content: "";
+
+
+    position: absolute;
+
+
+    inset: 0;
+
+
+    background:
+        radial-gradient(circle at top,
+            rgba(255, 240, 190, 0.35),
+            transparent 55%);
+
+
+    opacity: 0;
+
+
+    animation:
+        moonLight 3s ease forwards;
+
+
+    pointer-events: none;
+
+
+}
+
+
+
+@keyframes moonLight {
+
+
+    0% {
+
+        opacity: 0;
+
+    }
+
+
+    40% {
+
+        opacity: 1;
+
+    }
+
+
+    100% {
+
+        opacity: 0.4;
+
+    }
+
+}
+
+/* 珈琲名登場 */
+
+#coffeeName {
+
+
+    opacity: 0;
+
+
+    animation:
+        titleReveal 1.5s ease 1.8s forwards;
+
+
+}
+
+
+
+@keyframes titleReveal {
+
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(20px);
+
+        letter-spacing: 15px;
+
+    }
+
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+
+        letter-spacing: 3px;
+
+    }
+
+
+}
+/* =====================
+   月点灯エフェクト
+===================== */
+
+.night-start .moon-logo {
+
+    filter:
+        drop-shadow(0 0 30px rgba(255, 230, 150, 1));
+
+
+    transform:
+        scale(1.2);
+
+}
+
+@keyframes arrivalText {
+
+
+    from {
+
+        opacity: 0;
+
+    }
+
+
+    to {
+
+        opacity: 1;
+
+    }
+
+
+}

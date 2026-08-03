@@ -1,0 +1,971 @@
+/*
+==========================================
+真夜中珈琲屋台
+
+Version 0.2
+
+作成日：2026-07-07
+
+==========================================
+*/
+
+/* ==========================
+   全体
+========================== */
+
+
+body {
+    margin: 0;
+    padding: 0;
+
+    background: linear-gradient(to bottom,
+            #08111f 0%,
+            #14233d 45%,
+            #241b2f 100%);
+
+    color: white;
+
+    font-family:
+        "Yu Gothic",
+        sans-serif;
+
+    min-height: 100vh;
+
+    padding: 40px 0;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+}
+
+.container {
+
+    text-align: center;
+
+    max-width: 700px;
+
+}
+
+/* ==========================
+   星の瞬き
+========================== */
+.stars {
+
+    position: fixed;
+
+    inset: 0;
+
+    pointer-events: none;
+
+}
+
+.stars span {
+
+    position: absolute;
+
+    width: 2px;
+
+    height: 2px;
+
+    border-radius: 50%;
+
+    background: white;
+
+}
+
+.stars span:nth-child(1) {
+
+    top: 10%;
+
+    left: 12%;
+
+}
+
+.stars span:nth-child(2) {
+
+    top: 20%;
+
+    left: 30%;
+
+}
+
+.stars span:nth-child(3) {
+
+    top: 30%;
+
+    left: 50%;
+
+}
+
+.stars span:nth-child(4) {
+
+    top: 80%;
+
+    left: 20%;
+
+}
+
+.stars span:nth-child(5) {
+
+    top: 60%;
+
+    left: 60%;
+
+}
+
+.stars span:nth-child(6) {
+
+    top: 90%;
+
+    left: 40%;
+
+}
+
+.stars span:nth-child(7) {
+
+    top: 40%;
+
+    left: 80%;
+
+}
+
+.stars span:nth-child(8) {
+
+    top: 20%;
+
+    left: 60%;
+
+}
+
+.stars span:nth-child(9) {
+
+    top: 10%;
+
+    left: 50%;
+
+}
+
+.stars span:nth-child(10) {
+
+    top: 5%;
+
+    left: 30%;
+
+}
+
+.stars span:nth-child(11) {
+
+    top: 10%;
+
+    left: 50%;
+
+}
+
+.stars span:nth-child(12) {
+
+    top: 30%;
+
+    left: 80%;
+
+}
+
+@keyframes twinkle {
+
+    0%,
+    100% {
+
+        opacity: .2;
+
+        transform: scale(.8);
+
+    }
+
+    50% {
+
+        opacity: 1;
+
+        transform: scale(1.4);
+
+    }
+
+}
+
+/* ==========================
+   流れ星
+========================== */
+
+.shooting-star {
+
+    position: fixed;
+
+    top: 12%;
+    right: -180px;
+
+    width: 180px;
+    height: 2px;
+
+    background: linear-gradient(to left,
+            white,
+            rgba(255, 255, 255, .7),
+            rgba(255, 255, 255, .2),
+            rgba(255, 255, 255, 0));
+
+    opacity: 0;
+
+    pointer-events: none;
+}
+
+/* 光る先端 */
+.shooting-star::before{
+
+    content:"";
+
+    position:absolute;
+
+    left:-2px;
+    right:auto;
+
+    top:50%;
+
+    transform:translateY(-50%);
+
+    width:6px;
+    height:6px;
+
+    border-radius:50%;
+
+    background:white;
+
+    box-shadow:
+        0 0 8px white,
+        0 0 18px white,
+        0 0 30px rgba(255,255,255,.6);
+
+}
+
+
+/* 流れ星アニメーション */
+@keyframes shooting {
+
+    0% {
+
+        opacity: 0;
+
+        transform:
+            translate(0, 0) rotate(-20deg);
+
+    }
+
+    3% {
+
+        opacity: 1;
+
+    }
+
+    13% {
+
+        opacity: 1;
+
+        transform:
+            translate(-750px, 260px) rotate(-20deg);
+
+    }
+
+    16% {
+
+        opacity: 0;
+
+    }
+
+    100% {
+
+        opacity: 0;
+
+        transform:
+            translate(-750px, 260px) rotate(-0deg);
+
+    }
+
+}
+
+/* ==========================
+   タイトル
+========================== */
+
+h1 {
+
+    font-size: 56px;
+
+    letter-spacing: 8px;
+
+    margin-bottom: 20px;
+
+    font-weight: 300;
+
+    letter-spacing: 12px;
+
+    text-shadow:
+        0 0 10px rgba(255, 255, 255, .4),
+        0 0 25px rgba(255, 220, 120, .25);
+
+}
+
+/* ==========================
+   まだ未定の音楽を流す箇所
+========================== */
+
+.intro {}
+
+p {
+
+    line-height: 2;
+
+    color: #d8d8d8;
+
+}
+
+/* ==========================
+   月
+========================== */
+
+.moon{
+
+    display:flex;
+
+    justify-content:center;
+
+    margin-bottom:30px;
+
+    cursor:pointer;
+
+}
+
+.moon img{
+
+    width:72px;
+
+    transition:.5s;
+
+    filter:
+        drop-shadow(0 0 10px rgba(255,220,120,.5))
+        drop-shadow(0 0 20px rgba(255,220,120,.35));
+
+}
+
+.moon:hover img{
+
+    transform:
+
+        scale(1.08)
+
+        rotate(-8deg);
+
+}
+
+.moon.active img{
+
+    filter:
+        drop-shadow(0 0 10px #ffe18a)
+        drop-shadow(0 0 25px #ffd45c)
+        drop-shadow(0 0 45px #fff1b8);
+
+    transform: scale(1.12);
+
+}
+
+button {
+
+    background: none;
+
+    border: none;
+
+    color: #E8D8B0;
+
+    font-size: 22px;
+
+    letter-spacing: 4px;
+
+    cursor: pointer;
+
+    transition: .4s;
+
+}
+
+button:hover {
+
+    color: white;
+
+    transform: translateY(-4px);
+
+    text-shadow:
+        0 0 15px #ffdd88;
+
+}
+
+.subtitle {
+
+    margin-top: -10px;
+
+    margin-bottom: 18px;
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 20px;
+
+    font-weight: 300;
+
+    letter-spacing: 6px;
+
+    color: rgba(232, 216, 176, .75);
+
+}
+
+.catchcopy {
+
+    margin-bottom: 55px;
+
+    font-family: "Zen Old Mincho", serif;
+
+    font-size: 18px;
+
+    line-height: 2;
+
+    letter-spacing: 3px;
+
+    color: rgba(255, 255, 255, .88);
+
+    text-shadow:
+        0 0 8px rgba(255, 255, 255, .15);
+
+}
+
+/* ==========================
+   メッセージ
+========================== */
+
+#message {
+
+    min-height: 60px;
+
+    margin: 25px 0;
+
+    font-size: 22px;
+
+    color: #F6E6B4;
+
+    letter-spacing: 2px;
+
+    line-height: 1.8;
+
+}
+
+/* ==========================
+   ボタン
+========================== */
+
+#startButton {
+
+    opacity: 0;
+
+    transform: translateY(20px);
+
+    pointer-events: none;
+
+    transition: all .8s ease;
+
+}
+
+#startButton.show {
+
+    opacity: 1;
+
+    transform: translateY(0);
+
+    pointer-events: auto;
+
+}
+
+/* ==========================
+   お月様が光ってぼや～ってするやつ
+========================== */
+
+.glow {
+
+    transform: scale(1.25);
+
+    transition: all .8s ease;
+
+    text-shadow:
+        0 0 15px rgba(255, 255, 255, .9),
+        0 0 35px rgba(255, 230, 120, .8),
+        0 0 60px rgba(255, 220, 80, .6);
+
+}
+
+/*==================================
+    フェードアウト
+==================================*/
+
+.fade-out {
+
+    animation: fadeOut 1.5s forwards;
+
+}
+
+@keyframes fadeOut {
+
+    from {
+
+        opacity: 1;
+
+    }
+
+    to {
+
+        opacity: 0;
+
+    }
+
+}
+
+/*==================================
+    店内画面
+==================================*/
+
+#shop {
+
+    display: none;
+
+}
+
+.master {
+
+    font-size: 28px;
+
+    margin-top: 30px;
+
+    color: #E8D8B0;
+
+}
+
+/*湯気*/
+.coffee {
+
+    position: relative;
+
+    display: inline-block;
+
+    font-size: 42px;
+
+}
+
+.steam {
+
+    position: absolute;
+
+    bottom: 20px;
+
+    left: 50%;
+
+    width: 6px;
+
+    height: 20px;
+
+    border-radius: 50%;
+
+    background: rgba(255, 245, 220, .45);
+
+    filter: blur(2px);
+
+    animation: steam 3s infinite ease-in-out;
+
+}
+
+/* 湯気をずらします */
+.steam1 {
+
+    margin-left: -8px;
+
+    animation-delay: 0s;
+
+}
+
+.steam2 {
+
+    margin-left: 0;
+
+    animation-delay: 1s;
+
+}
+
+.steam3 {
+
+    margin-left: 8px;
+
+    animation-delay: 2s;
+
+}
+
+@keyframes steam {
+
+    0% {
+
+        opacity: 0;
+
+        transform:
+
+            translateY(0) scale(.5);
+
+    }
+
+    25% {
+
+        opacity: .6;
+
+    }
+
+    100% {
+
+        opacity: 0;
+
+        transform:
+
+            translateY(-45px) translateX(8px) scale(1.5);
+
+    }
+
+}
+
+#shopMessage {
+
+    margin-top: 40px;
+
+    font-size: 26px;
+
+    line-height: 2;
+
+    color: #F5E8C7;
+
+}
+
+/*==================================
+    カウンター
+==================================*/
+
+.counter {
+
+    width: 100%;
+
+    height: 120px;
+
+    margin-top: 80px;
+
+    border-radius: 12px;
+
+    background:
+        repeating-linear-gradient(90deg,
+
+            #6b472d 0px,
+
+            #6b472d 12px,
+
+            #7a5335 13px,
+
+            #5a3a25 18px);
+
+    box-shadow:
+        0 0 30px rgba(0, 0, 0, .5);
+
+}
+#choices{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:16px;
+
+    margin-top:25px;
+
+    align-items:center;
+
+}
+#choices button{
+
+    width:340px;
+
+    padding:16px 24px;
+
+    text-align:left;
+
+}
+
+/*==================================
+    ランタン
+==================================*/
+
+.lanterns {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    margin-bottom: 40px;
+
+}
+
+.lantern {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    animation: swing 4s ease-in-out infinite alternate;
+
+}
+
+.lantern:first-child .lamp {
+
+    animation-delay: 0s;
+
+}
+
+.lantern:last-child .lamp {
+
+    animation-delay: 1.5s;
+
+}
+
+/* ランタンの吊るし紐  */
+
+.string {
+
+    width: 2px;
+
+    height: 45px;
+
+    background: #666;
+
+}
+
+.lamp {
+
+    width: 22px;
+
+    height: 22px;
+
+    border-radius: 50%;
+
+    background: #FFF8DD;
+
+    box-shadow:
+        0 0 10px #FFF8DD,
+        0 0 20px rgba(255, 230, 150, .9),
+        0 0 45px rgba(255, 210, 80, .6),
+        0 0 80px rgba(255, 210, 80, .25);
+
+    animation: glow 3s ease-in-out infinite alternate;
+
+}
+
+.lamp {
+
+    box-shadow:
+
+        0 0 12px #F5E7B8,
+
+        0 0 28px rgba(245, 231, 184, .8),
+
+        0 0 55px rgba(245, 231, 184, .5),
+
+        0 0 90px rgba(255, 220, 120, .2);
+
+}
+
+.lamp {
+
+    animation:
+
+        glow 2.5s ease-in-out infinite alternate;
+
+}
+
+@keyframes glow {
+
+    0% {
+
+        transform: scale(1);
+
+        box-shadow:
+            0 0 8px #FFF8DD,
+            0 0 18px rgba(255, 230, 150, .7),
+            0 0 35px rgba(255, 210, 80, .45),
+            0 0 60px rgba(255, 210, 80, .15);
+
+    }
+
+    100% {
+
+        transform: scale(1.08);
+
+        box-shadow:
+            0 0 15px #FFF8DD,
+            0 0 35px rgba(255, 230, 150, 1),
+            0 0 70px rgba(255, 210, 80, .75),
+            0 0 120px rgba(255, 210, 80, .35);
+
+    }
+
+}
+
+/*==================================
+    結果カード
+==================================*/
+
+#resultCard{
+
+    display:none;
+
+    margin-top:60px;
+
+    animation:cardAppear 1.5s ease;
+
+}
+
+.card{
+
+    width:420px;
+
+    margin:auto;
+
+    padding:35px;
+
+    border-radius:20px;
+
+    background:
+
+        linear-gradient(
+            180deg,
+            rgba(35,35,45,.96),
+            rgba(18,18,25,.96)
+        );
+
+    border:1px solid rgba(220,190,120,.45);
+
+    box-shadow:
+
+        0 15px 50px rgba(0,0,0,.6),
+
+        0 0 30px rgba(255,220,120,.15);
+
+}
+
+.cardTitle{
+
+    font-size:26px;
+
+    letter-spacing:8px;
+
+}
+
+.cardCatch{
+
+    color:#DCCFA8;
+
+    font-size:14px;
+
+    letter-spacing:2px;
+
+}
+
+.line{
+
+    width:100%;
+
+    height:1px;
+
+    margin:25px 0;
+
+    background:rgba(220,190,120,.25);
+
+}
+
+#coffeeName{
+
+    color:#F6D27A;
+
+    font-size:30px;
+
+    font-weight:300;
+
+}
+
+.cardSection{
+
+    margin:30px 0;
+
+    text-align:left;
+
+}
+
+.cardSection h3{
+
+    color:#E8D8B0;
+
+    font-weight:normal;
+
+    letter-spacing:3px;
+
+}
+
+.cardSection p{
+
+    color:#F1F1F1;
+
+    line-height:2;
+
+}
+
+.cardFooter{
+
+    margin-top:40px;
+
+    text-align:right;
+
+    color:#C7B188;
+
+    font-style:italic;
+
+}
+
+@keyframes cardAppear{
+
+    from{
+
+        opacity:0;
+
+        transform:
+
+            translateY(50px)
+
+            scale(.96);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:
+
+            translateY(0)
+
+            scale(1);
+
+    }
+
+}

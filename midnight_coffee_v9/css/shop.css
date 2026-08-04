@@ -677,3 +677,13 @@ button {
     transition: none !important;
   }
 }
+
+
+/* ===== Master still switching ===== */
+.master-image {
+  transition: opacity .28s ease, transform .28s ease;
+}
+.master-image.is-changing {
+  opacity: 0;
+  transform: translateY(5px);
+}

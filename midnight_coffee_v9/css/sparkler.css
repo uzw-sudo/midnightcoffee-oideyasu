@@ -383,3 +383,260 @@ button, a { color: inherit; font: inherit; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }
 }
+
+
+/* ===== Compact two-button layout 2026-08-04 ===== */
+.sparkler-actions {
+  width: min(100%, 540px);
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-inline: auto;
+}
+
+.sparkler-actions button {
+  width: 100%;
+  min-width: 0;
+  min-height: 50px;
+  padding: 10px 14px;
+  font-size: clamp(.72rem, 1.2vw, .88rem);
+  letter-spacing: .08em;
+}
+
+.primary-button[disabled] {
+  display: block;
+}
+
+.wish-button {
+  gap: 10px;
+}
+
+.wish-mark {
+  font-size: 1rem;
+}
+
+@media (max-width: 520px) {
+  .sparkler-actions {
+    width: min(100%, 360px);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+    margin-top: 18px;
+  }
+
+  .sparkler-actions button {
+    min-width: 0;
+    min-height: 46px;
+    padding: 8px 7px;
+    font-size: .68rem;
+    line-height: 1.35;
+  }
+
+  .wish-button {
+    gap: 5px;
+  }
+
+  .wish-mark {
+    font-size: .85rem;
+  }
+}
+
+
+/* ===== Mobile compact layout / dialogue-safe edition ===== */
+@media (max-width: 600px) {
+  .sparkler-page {
+    padding: max(8px, env(safe-area-inset-top)) 8px max(12px, env(safe-area-inset-bottom));
+  }
+
+  .sparkler-scene {
+    min-height: auto;
+  }
+
+  /* スマホでは花火を主役にするため店名ロゴを省略 */
+  .sparkler-brand {
+    display: none;
+  }
+
+  .master-message {
+    min-height: 76px;
+    margin-top: 0;
+    padding: 10px 14px;
+    text-align: center;
+  }
+
+  .master-label {
+    justify-content: center;
+    margin-bottom: 4px;
+  }
+
+  .master-message p {
+    min-height: 2.8em;
+    font-size: .72rem;
+    line-height: 1.65;
+  }
+
+  .sparkler-main {
+    padding-top: 4px;
+    padding-bottom: 18px;
+  }
+
+  .sparkler-field {
+    width: min(100%, 390px);
+    height: clamp(245px, 39svh, 315px);
+  }
+
+  .hanging-stick {
+    top: -62px;
+    height: calc(50% + 67px);
+  }
+
+  .sparkler-guide {
+    margin-top: -3px;
+  }
+
+  .guide-kicker {
+    margin-bottom: 5px;
+    font-size: .58rem;
+  }
+
+  .guide-kicker::before,
+  .guide-kicker::after {
+    width: 23px;
+  }
+
+  .stage-label {
+    min-height: 1.45em;
+    font-size: .82rem;
+    letter-spacing: .07em;
+  }
+
+  .sparkler-actions {
+    width: min(100%, 330px);
+    margin-top: 10px;
+    gap: 7px;
+  }
+
+  .sparkler-actions button {
+    min-height: 40px;
+    padding: 6px 5px;
+    font-size: .64rem;
+  }
+
+  .stage-progress {
+    width: min(100%, 350px);
+    margin-top: 16px;
+  }
+
+  .stage-item {
+    gap: 6px;
+  }
+
+  .stage-name {
+    writing-mode: horizontal-tb;
+    height: auto;
+    font-size: .56rem;
+    letter-spacing: .02em;
+  }
+
+  .stage-dot {
+    width: 10px;
+    height: 10px;
+    border-width: 1px;
+  }
+
+  .stage-progress::before {
+    bottom: 5px;
+  }
+
+  .sparkler-status {
+    min-height: 1.2em;
+    margin-top: 10px;
+    font-size: .56rem;
+  }
+
+  .return-link {
+    margin-top: 8px;
+    padding: 8px 11px;
+    font-size: .66rem;
+  }
+}
+
+@media (max-width: 600px) and (max-height: 700px) {
+  .sparkler-field {
+    height: 230px;
+  }
+
+  .master-message {
+    min-height: 68px;
+  }
+
+  .master-message p {
+    font-size: .67rem;
+  }
+
+  .stage-progress {
+    margin-top: 11px;
+  }
+}
+
+/* =========================
+   線香花火・結果画面ボタン
+========================= */
+
+.sparkler-result .result-actions {
+  position: static;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+
+  width: 100%;
+  margin: 18px auto 0;
+  padding: 0 12px;
+}
+
+.sparkler-result .result-actions button,
+.sparkler-result .result-actions a {
+  position: static !important;
+
+  top: auto !important;
+  right: auto !important;
+  bottom: auto !important;
+  left: auto !important;
+
+  width: auto;
+  min-width: 165px;
+  margin: 0;
+  padding: 12px 20px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid rgba(201, 171, 100, 0.7);
+  border-radius: 999px;
+
+  color: #eee2bf;
+  background: rgba(5, 13, 24, 0.78);
+
+  font: inherit;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+@media (max-width: 520px) {
+  .sparkler-result .result-actions {
+    gap: 8px;
+    padding-inline: 8px;
+  }
+
+  .sparkler-result .result-actions button,
+  .sparkler-result .result-actions a {
+    flex: 1;
+    min-width: 0;
+    max-width: 190px;
+    padding: 11px 8px;
+    font-size: 0.76rem;
+    white-space: nowrap;
+  }
+}

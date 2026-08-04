@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -8,9 +9,12 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Noto+Serif+JP:wght@400;500;600&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Noto+Serif+JP:wght@400;500;600&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="../css/sparkler.css">
 </head>
+
 <body>
   <canvas id="nightSky" class="night-sky" aria-hidden="true"></canvas>
 
@@ -76,11 +80,6 @@
         <p id="sparklerStatus" class="sparkler-status" role="status" aria-live="polite"></p>
       </section>
 
-      <a class="return-link" href="../menu/index.html">
-        <span aria-hidden="true">▥</span>
-        屋台に戻る
-      </a>
-
       <article id="sparklerResult" class="sparkler-result" hidden>
         <div class="result-paper">
           <p class="result-kicker">TONIGHT'S SPARKLER</p>
@@ -91,14 +90,22 @@
           <p id="resultMessage" class="result-message"></p>
           <p id="resultMaster" class="result-master"></p>
           <dl class="result-details">
-            <div><dt>今夜の色</dt><dd id="resultColor"></dd></div>
-            <div><dt>持ち帰る言葉</dt><dd id="resultWord"></dd></div>
+            <div>
+              <dt>今夜の色</dt>
+              <dd id="resultColor"></dd>
+            </div>
+            <div>
+              <dt>持ち帰る言葉</dt>
+              <dd id="resultWord"></dd>
+            </div>
           </dl>
         </div>
 
         <div class="result-actions">
           <button id="againButton" type="button">もう一本だけ選ぶ</button>
-          <a href="../menu/index.html">屋台へ戻る</a>
+          <a class="result-return-button" href="../menu/index.html">
+            屋台へ戻る
+          </a>
         </div>
       </article>
     </section>
@@ -108,4 +115,5 @@
   <script src="../js/dialogueEngine.js" defer></script>
   <script src="../js/sparkler.js" defer></script>
 </body>
+
 </html>

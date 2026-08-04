@@ -129,3 +129,118 @@
     min-height: 134px;
   }
 }
+
+/* ==================================================
+   店内メニュー：スマホ表示・最終修正
+================================================== */
+
+@media (max-width: 700px) {
+
+  /* 店主の台詞欄を中央へ */
+  .master-message,
+  .dialogue-area,
+  .menu-dialogue {
+    position: relative !important;
+    inset: auto !important;
+
+    width: calc(100% - 28px) !important;
+    max-width: 680px !important;
+
+    margin: 18px auto 22px !important;
+    padding: 20px 18px !important;
+
+    text-align: center !important;
+    direction: ltr !important;
+    writing-mode: horizontal-tb !important;
+  }
+
+  .master-label,
+  .speaker-label {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: baseline !important;
+    gap: 10px !important;
+
+    width: 100% !important;
+    margin: 0 auto 12px !important;
+    text-align: center !important;
+  }
+
+  .master-message p,
+  .master-dialogue,
+  #masterDialogue {
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 auto !important;
+
+    text-align: center !important;
+    line-height: 2 !important;
+    overflow-wrap: anywhere !important;
+    word-break: normal !important;
+  }
+
+  /* 「今夜はどうする？」を中央へ */
+  .service-menu,
+  .menu-selection {
+    width: calc(100% - 28px) !important;
+    margin: 0 auto !important;
+  }
+
+  .service-menu__header,
+  .menu-selection__header {
+    width: 100% !important;
+    margin: 0 auto 14px !important;
+    text-align: center !important;
+  }
+
+  /* 2枚のメニュー札を横並びに固定 */
+  .service-menu__choices,
+  .menu-choices {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 8px !important;
+
+    width: 100% !important;
+    margin: 0 auto !important;
+  }
+
+  .service-card,
+  .menu-card {
+    width: 100% !important;
+    min-width: 0 !important;
+    aspect-ratio: 12 / 7 !important;
+    margin: 0 !important;
+  }
+
+  .service-card__content,
+  .menu-card__content {
+    padding: 8% 5% !important;
+  }
+
+  .service-card__en,
+  .menu-card__en {
+    margin-bottom: 5px !important;
+    font-size: clamp(0.44rem, 2.25vw, 0.61rem) !important;
+    letter-spacing: 0.11em !important;
+    white-space: nowrap !important;
+  }
+
+  .service-card strong,
+  .menu-card strong {
+    font-size: clamp(0.61rem, 3vw, 0.8rem) !important;
+    line-height: 1.55 !important;
+    letter-spacing: 0.03em !important;
+  }
+
+  .service-card__description,
+  .menu-card__description {
+    margin-top: 5px !important;
+    font-size: clamp(0.43rem, 2.1vw, 0.57rem) !important;
+    line-height: 1.45 !important;
+
+    display: -webkit-box !important;
+    -webkit-box-orient: vertical !important;
+    -webkit-line-clamp: 2 !important;
+    overflow: hidden !important;
+  }
+}

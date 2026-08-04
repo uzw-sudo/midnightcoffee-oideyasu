@@ -46,6 +46,8 @@
   let wished = false;
   let animationId = 0;
   let stageTimer = 0;
+  let wishSpeaking = false;
+  let pendingStageDialogue = "";
 
   function resizeCanvas() {
     if (!el.canvas || !ctx) return;
@@ -156,6 +158,14 @@
     el.field.dataset.stage = stage.id;
     el.stageLabel.textContent = `${stage.name}の火花を、そっと見守ってね。`;
     updateProgress(index);
+
+    /* 願い事の台詞中は、花火実況を割り込ませない */
+    if (wishSpeaking) {
+      pendingStageDialogue = stage.dialogue;
+      return;
+    }
+
+    pendingStageDialogue = "";
     speak(stage.dialogue);
   }
 
@@ -187,6 +197,12 @@
     return pool[Math.floor(Math.random() * pool.length)] || RESULTS[0];
   }
 
+  async function waitForWishDialogue() {
+    while (wishSpeaking) {
+      await new Promise(resolve => window.setTimeout(resolve, 80));
+    }
+  }
+
   async function finish() {
     running = false;
     window.clearTimeout(stageTimer);
@@ -198,6 +214,8 @@
     updateProgress(4, true);
     el.stageItems[4]?.classList.add("is-active");
 
+    await waitForWishDialogue();
+    pendingStageDialogue = "";
     await speak("火ぃ、消えたな。……最後まで見てたなら、結果も持って帰れ。");
 
     const result = chooseResult();
@@ -228,6 +246,8 @@
 
     running = true;
     wished = false;
+    wishSpeaking = false;
+    pendingStageDialogue = "";
     stageIndex = -1;
     particles = [];
 
@@ -246,11 +266,27 @@
     if (!running || wished) return;
 
     wished = true;
+    wishSpeaking = true;
+    pendingStageDialogue = "";
     el.wish.disabled = true;
     el.status.textContent = "願い事を、火花へ預けました。";
 
+    /* 進行中の花火実況を止め、願い事の台詞を優先する */
+    window.MidnightDialogue?.stop?.();
     window.MidnightNightSky?.shoot({ x: innerWidth * .78, y: innerHeight * .12 });
     await speak("お。……今見えたかぁ？　願い事しとけよ。");
+
+    wishSpeaking = false;
+
+    /* 願い事の間に段階が変わっていた場合だけ、最新の実況を再開 */
+    if (running && pendingStageDialogue) {
+      const dialogue = pendingStageDialogue;
+      pendingStageDialogue = "";
+      await new Promise(resolve => window.setTimeout(resolve, 420));
+      if (running && !wishSpeaking) {
+        speak(dialogue);
+      }
+    }
   }
 
   function reset() {
@@ -258,6 +294,8 @@
 
     running = false;
     wished = false;
+    wishSpeaking = false;
+    pendingStageDialogue = "";
     stageIndex = -1;
     particles = [];
 

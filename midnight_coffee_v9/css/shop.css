@@ -915,44 +915,30 @@ button {
 
 @media (max-width: 560px) {
 
+  .dialogue-area {
+    grid-template-columns: 130px minmax(0, 1fr) !important;
+    column-gap: 12px !important;
+
+    min-height: 140px !important;
+    padding: 8px 12px !important;
+  }
+
   .mobile-master-image {
     width: 130px;
     height: 130px;
 
-    left: 10px;
-    bottom: 0;
-
+    margin: auto;
     object-fit: contain;
-    object-position: bottom center;
-  }
-
- .mobile-master-image {
-    width: 130px;
-    height: 130px;
-
-    left: 10px;
-    bottom: 0;
-
-    object-fit: contain;
-    object-position: bottom center;
-  }
-
-  /* 鵜沢さん130px分、文章を右へ避ける */
-  .dialogue-area {
-    min-height: 135px;
-    padding:
-      16px
-      14px
-      16px
-      155px;
+    object-position: center bottom;
   }
 
   .speaker-label {
-    justify-content: flex-start;
+    justify-content: flex-start !important;
   }
 
-  .master-dialogue {
-    text-align: left;
-    line-height: 1.85;
+  .master-dialogue,
+  #masterDialogue {
+    text-align: left !important;
+    line-height: 1.75 !important;
   }
 }

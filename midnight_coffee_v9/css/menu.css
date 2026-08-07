@@ -412,4 +412,80 @@
   .service-description{
     display:none;
   }
+
+  /* ========================================
+   スマホ：鵜沢さんを大きく・札を薄く
+======================================== */
+
+/* 鵜沢さんの表示領域を大きく */
+.master-stage{
+  min-height:290px;
+}
+
+/* 鵜沢さん本人も大きく */
+.master-image{
+  left:50%;
+  bottom:0;
+
+  width:auto;
+  max-width:82%;
+  max-height:100%;
+
+  transform:translateX(-50%);
+  object-fit:contain;
+  object-position:bottom center;
+}
+
+
+/* 「今夜はどうする？」周辺を詰める */
+.service-menu{
+  width:90%;
+  margin:0 auto;
+  padding-top:2px;
+}
+
+.service-heading{
+  margin-bottom:6px;
+}
+
+.service-heading p{
+  margin-bottom:2px;
+}
+
+.service-heading h2{
+  font-size:.86rem;
+}
+
+
+/* 札を横長・薄型にする */
+.service-card{
+  aspect-ratio:2.35 / 1;
+}
+
+
+/* 札内部の上下余白を減らす */
+.service-content{
+  padding:4% 5%;
+}
+
+.service-icon{
+  margin-bottom:1px;
+  font-size:.85rem;
+}
+
+.service-en{
+  margin-bottom:2px;
+  font-size:.4rem;
+}
+
+/* メイン文字は読めるサイズを維持 */
+.service-content strong{
+  font-size:.66rem;
+  line-height:1.35;
+}
+
+/* 説明文はスマホでは非表示 */
+.service-description{
+  display:none;
+}
 }

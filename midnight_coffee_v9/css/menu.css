@@ -408,12 +408,8 @@
     font-size:.46rem;
     line-height:1.45;
   }
-}
-
-@media(max-width:560px){
 
   .service-description{
     display:none;
   }
-
 }

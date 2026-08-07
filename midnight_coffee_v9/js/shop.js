@@ -3,29 +3,34 @@
   const QUESTIONS_PATH="../data/questions.json";
   const RESULT_PATH="../result/index.html";
   const $=id=>document.getElementById(id);
-  const el={dialogue:$("masterDialogue"),masterImage:$("masterImage"),current:$("questionCurrent"),total:$("questionTotal"),kicker:$("questionKicker"),title:$("questionTitle"),hint:$("questionHint"),answerList:$("answerList"),backButton:$("backButton"),status:$("questionStatus"),orderNumber:$("temporaryOrderNumber"),transition:$("brewingTransition"),brewingMessage:$("brewingMessage")};
+  const el={dialogue:$("masterDialogue"),masterImage:$("masterImage"),mobileMasterImage:$("mobileMasterImage"),current:$("questionCurrent"),total:$("questionTotal"),kicker:$("questionKicker"),title:$("questionTitle"),hint:$("questionHint"),answerList:$("answerList"),backButton:$("backButton"),status:$("questionStatus"),orderNumber:$("temporaryOrderNumber"),transition:$("brewingTransition"),brewingMessage:$("brewingMessage")};
   let questions=[],index=0,answers=[],locked=false;
   const format=n=>String(n).padStart(2,"0");
   const DEFAULT_MASTER_IMAGE = "../assets/images/master.png";
 
   function setMasterImage(source) {
-    if (!el.masterImage) return;
+    const targets = [el.masterImage, el.mobileMasterImage].filter(Boolean);
+    if (!targets.length) return;
 
     const nextSource = source || DEFAULT_MASTER_IMAGE;
-    if (el.masterImage.getAttribute("src") === nextSource) return;
+    if (targets.every(image => image.getAttribute("src") === nextSource)) return;
 
-    el.masterImage.classList.add("is-changing");
+    targets.forEach(image => image.classList.add("is-changing"));
 
     const preload = new Image();
     preload.onload = () => {
-      el.masterImage.src = nextSource;
-      window.setTimeout(() => {
-        el.masterImage.classList.remove("is-changing");
-      }, 30);
+      targets.forEach(image => {
+        image.src = nextSource;
+        window.setTimeout(() => {
+          image.classList.remove("is-changing");
+        }, 30);
+      });
     };
     preload.onerror = () => {
-      el.masterImage.src = DEFAULT_MASTER_IMAGE;
-      el.masterImage.classList.remove("is-changing");
+      targets.forEach(image => {
+        image.src = DEFAULT_MASTER_IMAGE;
+        image.classList.remove("is-changing");
+      });
     };
     preload.src = nextSource;
   }

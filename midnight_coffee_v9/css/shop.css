@@ -907,13 +907,10 @@ button {
   .order-card {
     width: min(92vw, 430px) !important;
   }
-}
 
 /* ========================================
    スマホ版：注文画面の鵜沢さんを大きく
 ======================================== */
-
-@media (max-width: 560px) {
 
   .mobile-master-image {
     width: 115px;

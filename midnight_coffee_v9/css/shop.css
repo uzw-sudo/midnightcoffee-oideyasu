@@ -908,3 +908,21 @@ button {
     width: min(92vw, 430px) !important;
   }
 }
+
+/* ========================================
+   スマホ版：注文画面の鵜沢さんを大きく
+======================================== */
+
+@media (max-width: 560px) {
+
+  .mobile-master-image {
+    width: 115px;
+    height: 120px;
+
+    left: 10px;
+    bottom: 0;
+
+    object-fit: contain;
+    object-position: bottom center;
+  }
+}

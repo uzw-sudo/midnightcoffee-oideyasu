@@ -907,19 +907,52 @@ button {
   .order-card {
     width: min(92vw, 430px) !important;
   }
+}
 
 /* ========================================
    スマホ版：注文画面の鵜沢さんを大きく
 ======================================== */
 
+@media (max-width: 560px) {
+
   .mobile-master-image {
     width: 130px;
-    height: 135px;
+    height: 130px;
 
     left: 10px;
     bottom: 0;
 
     object-fit: contain;
     object-position: bottom center;
+  }
+
+ .mobile-master-image {
+    width: 130px;
+    height: 130px;
+
+    left: 10px;
+    bottom: 0;
+
+    object-fit: contain;
+    object-position: bottom center;
+  }
+
+  /* 鵜沢さん130px分、文章を右へ避ける */
+  .dialogue-area {
+    min-height: 135px;
+    padding:
+      16px
+      14px
+      16px
+      155px;
+  }
+
+  .speaker-label {
+    justify-content: flex-start;
+  }
+
+  .master-dialogue {
+    text-align: left;
+    line-height: 1.85;
   }
 }

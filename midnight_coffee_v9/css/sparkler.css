@@ -321,10 +321,18 @@ button, a { color: inherit; font: inherit; }
 .result-paper {
   position: relative;
   width: 100%;
-  padding: clamp(28px, 7vw, 54px);
+  aspect-ratio: 5 / 4;
+
+  padding: clamp(28px, 5vw, 48px);
+
   color: var(--ink);
   text-align: center;
-  background: #e9dbb4 url("../assets/images/question-paper.png") center/100% 100% no-repeat;
+
+  background:
+    url("../assets/images/sparkler-paper.png")
+    center / 100% 100%
+    no-repeat;
+
   filter: drop-shadow(0 18px 28px rgba(0,0,0,.38));
 }
 .result-kicker { margin: 0; font-family: "Cormorant Garamond", serif; font-size: .66rem; letter-spacing: .2em; }

@@ -8,9 +8,152 @@
   function image(node,path,fallback){if(!node)return;node.onerror=()=>{node.onerror=null;if(fallback)node.src=fallback;};node.src=path||fallback;}
   function metadata(id){const order=MidnightStorage.orderNumber();const digits=String(id||"M-001").replace(/\D/g,"").padStart(3,"0");text(el.orderNumber,order);text(el.moonNumber,`M-${digits}${order.slice(-3)}`);}
   function canvases(){if(!current)return;window.renderFlavorChart?.(current);window.renderConstellation?.(current);}
-  function presentation(card){const p=card.presentation||{};image(el.paper,p.paper,"../assets/images/card-paper.png");image(el.stain,p.stain,"../assets/images/coffee-stain.png");image(el.frame,p.frame,"../assets/images/frame.png");if(el.card){el.card.dataset.rarity=card.rarity||"normal";el.card.dataset.effect=p.effect||"none";el.card.classList.remove("is-ready");requestAnimationFrame(()=>requestAnimationFrame(()=>{el.card.classList.add("is-ready");if(card.rarity==="secret")setTimeout(()=>window.MidnightNightSky?.burst(3,230),420);else if(card.rarity==="rare")setTimeout(()=>window.MidnightNightSky?.shoot(),520);}));}}
+  function presentation(card) {
+  const p = card.presentation || {};
+  const isSecret = card.rarity === "secret";
+
+  /* 紙 */
+  image(
+    el.paper,
+    p.paper,
+    "../assets/images/card-paper.png"
+  );
+
+  /* SECRETだけ染み・枠を非表示 */
+  if (isSecret) {
+
+    if (el.stain) {
+      el.stain.removeAttribute("src");
+      el.stain.style.display = "none";
+    }
+
+    if (el.frame) {
+      el.frame.removeAttribute("src");
+      el.frame.style.display = "none";
+    }
+
+  } else {
+
+    /* 通常カードでは今まで通り */
+    if (el.stain) {
+      el.stain.style.display = "";
+      image(
+        el.stain,
+        p.stain,
+        "../assets/images/coffee-stain.png"
+      );
+    }
+
+    if (el.frame) {
+      el.frame.style.display = "";
+      image(
+        el.frame,
+        p.frame,
+        "../assets/images/frame.png"
+      );
+    }
+  }
+
+  if (el.card) {
+    el.card.dataset.rarity =
+      card.rarity || "normal";
+
+    el.card.dataset.effect =
+      p.effect || "none";
+
+    el.card.classList.remove("is-ready");
+
+    requestAnimationFrame(() =>
+      requestAnimationFrame(() => {
+        el.card.classList.add("is-ready");
+
+        if (card.rarity === "secret") {
+          setTimeout(
+            () => window.MidnightNightSky?.burst(3, 230),
+            420
+          );
+        } else if (card.rarity === "rare") {
+          setTimeout(
+            () => window.MidnightNightSky?.shoot(),
+            520
+          );
+        }
+      })
+    );
+  }
+}
   function render(card){current=card;const c=card.coffee||{},star=card.constellation||{};text(el.coffeeName,c.name);text(el.coffeeSubtitle,c.subtitle);text(el.constellationName,star.name);text(el.constellationText,star.text);text(el.diagnosis,card.diagnosisText);text(el.masterComment,card.masterComment);text(el.dessert,card.dessert);text(el.luckyItem,card.luckyItem);metadata(card.id);presentation(card);document.title=c.name?`${c.name}｜真夜中珈琲屋台`:"診断結果｜真夜中珈琲屋台";requestAnimationFrame(canvases);}
   async function share(){const name=el.coffeeName?.textContent?.trim()||"今夜の一杯";const d={title:"真夜中珈琲屋台",text:`真夜中珈琲屋台で「${name}」が選ばれました。`,url:location.href};try{if(navigator.share){await navigator.share(d);text(el.shareStatus,"共有画面を開きました。","");}else{await navigator.clipboard.writeText(`${d.text}\n${d.url}`);text(el.shareStatus,"結果の文章とURLをコピーしました。","");}}catch(e){if(e?.name!=="AbortError")text(el.shareStatus,"共有できませんでした。スクリーンショットをご利用ください。","");}}
-  async function init(){try{const cards=await MidnightData.loadJson(DATA_PATH);const stored=MidnightStorage.getCardId();const forced=stored&&cards.find(c=>c.id===stored)?stored:null;const chosen=MidnightCardEngine.select(cards,MidnightStorage.getScore(),{forcedId:forced,orderNumber:MidnightStorage.orderNumber()});MidnightStorage.setCardId(chosen.id);const resolved=MidnightCardEngine.resolve(chosen,MidnightStorage.getVariants());MidnightStorage.setVariants(resolved.variants);render(resolved.card);}catch(e){console.error(e);text(el.coffeeName,"今夜は準備中です");text(el.coffeeSubtitle,"データを読み込めませんでした。GitHub Pages または Live Server で開いてください。");}}
+  async function init(){
+  try{
+    const cards=await MidnightData.loadJson(DATA_PATH);
+
+    const stored=MidnightStorage.getCardId();
+    const answers=MidnightStorage.getAnswers?.() || [];
+
+    /*
+      ========================================
+      SECRET ROUTE
+      M-019「店主の気まぐれ」
+      ========================================
+      
+      q1 少し、疲れてしまった       → 0
+      q2 賑やかな灯りの近く         → 3
+      q3 姿の見えない新月           → 2
+      q4 ぬるく穏やか               → 1
+      q5 疲れていること             → 0
+      q6 小さな幸運がほしい         → 2
+      q7 始める強さ                 → 3
+    */
+
+    const secretRoute = [0, 3, 2, 1, 0, 2, 3];
+
+    const isSecretRoute =
+      answers.length === secretRoute.length &&
+      answers.every(
+        (answer, index) => answer === secretRoute[index]
+      );
+
+    const forced =
+      isSecretRoute
+        ? "M-019"
+        : stored && cards.find(c => c.id === stored)
+          ? stored
+          : null;
+
+    const chosen=MidnightCardEngine.select(
+      cards,
+      MidnightStorage.getScore(),
+      {
+        forcedId:forced,
+        orderNumber:MidnightStorage.orderNumber()
+      }
+    );
+
+    MidnightStorage.setCardId(chosen.id);
+
+    const resolved=MidnightCardEngine.resolve(
+      chosen,
+      MidnightStorage.getVariants()
+    );
+
+    MidnightStorage.setVariants(resolved.variants);
+
+    render(resolved.card);
+
+  }catch(e){
+    console.error(e);
+
+    text(
+      el.coffeeName,
+      "今夜は準備中です"
+    );
+
+    text(
+      el.coffeeSubtitle,
+      "データを読み込めませんでした。GitHub Pages または Live Server で開いてください。"
+    );
+  }
+}
   el.shareButton?.addEventListener("click",share);window.addEventListener("resize",()=>{clearTimeout(resizeTimer);resizeTimer=setTimeout(canvases,120)},{passive:true});document.addEventListener("DOMContentLoaded",init);
 })();

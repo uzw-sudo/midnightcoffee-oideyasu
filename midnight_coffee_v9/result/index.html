@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -10,7 +11,9 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Noto+Serif+JP:wght@400;500;600&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Noto+Serif+JP:wght@400;500;600&display=swap"
+    rel="stylesheet">
 
   <link rel="stylesheet" href="../css/result.css">
 </head>
@@ -23,21 +26,14 @@
 
       <!-- 画像レイヤー -->
       <div class="card-art" aria-hidden="true">
-        <img
-          class="card-layer card-paper"
-          src="../assets/images/card-paper.png"
-          alt=""
-        >
-        <img
-          class="card-layer coffee-stain"
-          src="../assets/images/coffee-stain.png"
-          alt=""
-        >
-        <img
-          class="card-layer card-frame"
-          src="../assets/images/frame.png"
-          alt=""
-        >
+        <img class="card-layer card-paper" src="../assets/images/card-paper.png" alt="">
+
+        <img class="card-layer coffee-stain" src="../assets/images/coffee-stain.png" alt="">
+
+        <!-- ★ 鵜沢さんの紙片 -->
+        <img class="master-paper" src="../assets/images/master-paper.png" alt="">
+
+        <img class="card-layer card-frame" src="../assets/images/frame.png" alt="">
       </div>
 
       <!-- 文字・Canvasレイヤー -->
@@ -59,13 +55,7 @@
         <section class="visual-grid" aria-label="味わいと星座">
           <div class="flavor-block">
             <h3>FLAVOR PROFILE</h3>
-            <canvas
-              id="flavorChart"
-              width="560"
-              height="420"
-              role="img"
-              aria-label="珈琲の味覚チャート"
-            ></canvas>
+            <canvas id="flavorChart" width="560" height="420" role="img" aria-label="珈琲の味覚チャート"></canvas>
           </div>
 
           <div class="constellation-block">
@@ -76,13 +66,7 @@
               </p>
             </div>
 
-            <canvas
-              id="starChart"
-              width="560"
-              height="420"
-              role="img"
-              aria-label="診断結果を表す星座"
-            ></canvas>
+            <canvas id="starChart" width="560" height="420" role="img" aria-label="診断結果を表す星座"></canvas>
           </div>
         </section>
 
@@ -132,12 +116,7 @@
         この結果を共有
       </button>
 
-      <p
-        id="shareStatus"
-        class="share-status"
-        role="status"
-        aria-live="polite"
-      ></p>
+      <p id="shareStatus" class="share-status" role="status" aria-live="polite"></p>
     </div>
   </main>
 
@@ -149,4 +128,5 @@
   <script src="../js/constellationEngine.js" defer></script>
   <script src="../js/result.js" defer></script>
 </body>
+
 </html>

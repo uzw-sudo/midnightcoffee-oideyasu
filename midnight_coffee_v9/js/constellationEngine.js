@@ -40,11 +40,13 @@
       );
   }
 
+
   function renderConstellation(card) {
     const canvas = document.getElementById("starChart");
     if (!canvas) return;
 
     const ctx = canvas.getContext("2d");
+    if (!ctx) return;
 
     const dpr = Math.min(
       window.devicePixelRatio || 1,
@@ -60,10 +62,29 @@
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     ctx.clearRect(0, 0, width, height);
 
+
+    /* ========================================
+       星座ポイント
+    ======================================== */
+
     const points = getPoints(card).map(([x, y]) => [
       width * (x / 100),
       height * (y / 100)
     ]);
+
+
+    /* ========================================
+       SECRETカード判定
+    ======================================== */
+
+    const isSecret =
+      document.getElementById("resultCard")
+        ?.dataset.rarity === "secret";
+
+
+    /* ========================================
+       カードIDから星配置用seedを生成
+    ======================================== */
 
     const seed = String(card?.id ?? "M-001")
       .split("")
@@ -73,27 +94,58 @@
         0
       );
 
+
+    /* ========================================
+       背景の小さな星
+    ======================================== */
+
     for (let index = 0; index < 26; index += 1) {
       const x =
-        ((index * 47 + seed * 13) % 100) /
+        (((index * 47) + (seed * 13)) % 100) /
         100 *
         width;
 
       const y =
-        ((index * 71 + seed * 7) % 100) /
+        (((index * 71) + (seed * 7)) % 100) /
         100 *
         height;
 
       const radius =
-        index % 4 === 0 ? 1.15 : .65;
+        index % 4 === 0
+          ? 1.15
+          : .65;
 
       ctx.beginPath();
-      ctx.fillStyle =
-        `rgba(238, 222, 177, ${.18 + (index % 5) * .06})`;
 
-      ctx.arc(x, y, radius, 0, Math.PI * 2);
+      ctx.fillStyle = isSecret
+        ? `rgba(
+            214,
+            174,
+            96,
+            ${.22 + (index % 5) * .07}
+          )`
+        : `rgba(
+            238,
+            222,
+            177,
+            ${.18 + (index % 5) * .06}
+          )`;
+
+      ctx.arc(
+        x,
+        y,
+        radius,
+        0,
+        Math.PI * 2
+      );
+
       ctx.fill();
     }
+
+
+    /* ========================================
+       星座をつなぐ線
+    ======================================== */
 
     ctx.beginPath();
 
@@ -105,14 +157,30 @@
       }
     });
 
-    ctx.strokeStyle = "rgba(224, 205, 153, .62)";
-    ctx.lineWidth = 1;
+    ctx.strokeStyle = isSecret
+      ? "rgba(218, 178, 96, .82)"
+      : "rgba(224, 205, 153, .62)";
+
+    ctx.lineWidth =
+      isSecret
+        ? 1.25
+        : 1;
+
     ctx.stroke();
+
+
+    /* ========================================
+       星本体＋グロー
+    ======================================== */
 
     points.forEach(([x, y], index) => {
       const radius =
-        index % 3 === 0 ? 2.6 : 1.8;
+        index % 3 === 0
+          ? 2.6
+          : 1.8;
 
+
+      /* 光 */
       const glow = ctx.createRadialGradient(
         x,
         y,
@@ -124,30 +192,106 @@
 
       glow.addColorStop(
         0,
-        "rgba(255, 246, 210, 1)"
+        isSecret
+          ? "rgba(255, 232, 172, 1)"
+          : "rgba(255, 246, 210, 1)"
       );
 
       glow.addColorStop(
         .25,
-        "rgba(244, 222, 167, .82)"
+        isSecret
+          ? "rgba(224, 177, 91, .92)"
+          : "rgba(244, 222, 167, .82)"
       );
 
       glow.addColorStop(
         1,
-        "rgba(244, 222, 167, 0)"
+        isSecret
+          ? "rgba(224, 177, 91, 0)"
+          : "rgba(244, 222, 167, 0)"
       );
 
+
+      /* グロー描画 */
       ctx.beginPath();
+
       ctx.fillStyle = glow;
-      ctx.arc(x, y, radius * 4, 0, Math.PI * 2);
+
+      ctx.arc(
+        x,
+        y,
+        radius * 4,
+        0,
+        Math.PI * 2
+      );
+
       ctx.fill();
 
+
+      /* 星の中心 */
       ctx.beginPath();
-      ctx.fillStyle = "#fff7dc";
-      ctx.arc(x, y, radius, 0, Math.PI * 2);
+
+      ctx.fillStyle = isSecret
+        ? "#ffe0a3"
+        : "#fff7dc";
+
+      ctx.arc(
+        x,
+        y,
+        radius,
+        0,
+        Math.PI * 2
+      );
+
       ctx.fill();
+
+
+      /* ========================================
+         SECRETだけ小さな十字光
+      ======================================== */
+
+      if (isSecret && index % 3 === 0) {
+        ctx.save();
+
+        ctx.strokeStyle =
+          "rgba(255, 222, 158, .72)";
+
+        ctx.lineWidth = .7;
+
+        ctx.beginPath();
+
+        ctx.moveTo(
+          x - radius * 3.2,
+          y
+        );
+
+        ctx.lineTo(
+          x + radius * 3.2,
+          y
+        );
+
+        ctx.moveTo(
+          x,
+          y - radius * 3.2
+        );
+
+        ctx.lineTo(
+          x,
+          y + radius * 3.2
+        );
+
+        ctx.stroke();
+
+        ctx.restore();
+      }
     });
   }
 
-  window.renderConstellation = renderConstellation;
+
+  /* ========================================
+     外部公開
+  ======================================== */
+
+  window.renderConstellation =
+    renderConstellation;
 })();

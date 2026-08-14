@@ -19,7 +19,7 @@
   async function intro() {
     await speak("いらっしゃい。……今日は、どうする？");
     await wait(450);
-    await speak("珈琲でも淹れるかぁ？　それとも、線香花火を一本持っていくか？");
+    await speak("珈琲でも淹れるか？　それとも、線香花火を一本持っていくか？");
     menu.hidden = false;
   }
 
@@ -27,7 +27,7 @@
     if (moving) return;
     moving = true;
     coffee.classList.add("is-selected");
-    await speak("珈琲だなぁ。……じゃあ、少し話を聞かせてくれるか？");
+    await speak("珈琲だな？……じゃあ、少し話を聞かせてくれるか？");
     transitionText.textContent = "店主が注文票を差し出した。";
     transition.classList.add("is-active");
     await wait(850);
@@ -38,7 +38,7 @@
     if (moving) return;
     moving = true;
     sparkler.classList.add("is-selected");
-    await speak("線香花火かぁ。……一本だけな。火ぃ、気ぃつけろよ。");
+    await speak("線香花火な。……一本だけだぜ？火ぃ、気ぃつけろよ？");
     transitionText.textContent = "店主から、細い花火を一本受け取った。";
     transition.classList.add("is-active");
     await wait(950);
@@ -51,7 +51,7 @@
     await wait(300);
     await speak("お。");
     await wait(470);
-    await speak("今見えたかぁ？　……願い事しとけよ。");
+    await speak("今見えたか？　……願い事しとけよ。");
   }
 
   coffee?.addEventListener("click", chooseCoffee);

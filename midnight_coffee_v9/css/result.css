@@ -486,3 +486,267 @@ button {
 @keyframes midnight-stamp { 0%{opacity:0;transform:scale(1.025)} 70%{opacity:1;transform:scale(.995)} 100%{opacity:1;transform:none} }
 @keyframes midnight-dust { from{opacity:.22;transform:translateY(0)} to{opacity:.52;transform:translateY(-3px)} }
 @media (prefers-reduced-motion: reduce) { .result-card,.result-card.is-ready,.result-card.is-ready .coffee-stain,.result-card.is-ready .card-frame,.result-card::after { animation:none!important; opacity:1; transform:none; } }
+
+/* ========================================
+   SECRET CARD THEME
+   M-019「店主の気まぐれ」完成版
+======================================== */
+
+
+/* ----------------------------------------
+   カード全体
+---------------------------------------- */
+
+.result-card[data-rarity="secret"] {
+  color: #efe2c2;
+
+  filter:
+    drop-shadow(0 24px 40px rgba(0, 0, 0, .52))
+    drop-shadow(0 0 24px rgba(218, 196, 120, .18));
+}
+
+
+/* ----------------------------------------
+   タイトル
+---------------------------------------- */
+
+.result-card[data-rarity="secret"] #coffeeName {
+  color: #f5e7c5;
+
+  text-shadow:
+    0 1px 0 rgba(255, 255, 255, .04),
+    0 0 18px rgba(206, 170, 96, .12);
+}
+
+.result-card[data-rarity="secret"] #coffeeSubtitle {
+  color: #cfc1a3;
+}
+
+.result-card[data-rarity="secret"] .card-brand h1 {
+  color: #ead9b6;
+}
+
+
+/* ----------------------------------------
+   英字・小見出し
+---------------------------------------- */
+
+.result-card[data-rarity="secret"] .brand-en,
+.result-card[data-rarity="secret"] .eyebrow,
+.result-card[data-rarity="secret"] .section-kicker,
+.result-card[data-rarity="secret"] .gift-label {
+  color: #c6a665;
+}
+
+.result-card[data-rarity="secret"] .brand-caption,
+.result-card[data-rarity="secret"] .selection-label {
+  color: #b9aa8d;
+}
+
+
+/* ----------------------------------------
+   区切り線
+---------------------------------------- */
+
+.result-card[data-rarity="secret"] .card-brand,
+.result-card[data-rarity="secret"] .selection,
+.result-card[data-rarity="secret"] .visual-grid,
+.result-card[data-rarity="secret"] .diagnosis-section,
+.result-card[data-rarity="secret"] .gift-grid,
+.result-card[data-rarity="secret"] .card-footer {
+  border-color: rgba(183, 147, 86, .28);
+}
+
+
+/* ----------------------------------------
+   FLAVOR PROFILE
+---------------------------------------- */
+
+.result-card[data-rarity="secret"] .flavor-block h3 {
+  color: #d4b879;
+}
+
+
+/* ----------------------------------------
+   星座エリア
+---------------------------------------- */
+
+.result-card[data-rarity="secret"] .constellation-block {
+  background: rgba(7, 7, 8, .12);
+
+  border:
+    1px solid rgba(205, 164, 91, .38);
+
+  box-shadow:
+    inset 0 0 24px rgba(0, 0, 0, .14);
+}
+
+.result-card[data-rarity="secret"] #constellationName {
+  color: #e7cf9a;
+}
+
+.result-card[data-rarity="secret"] #constellationText {
+  color: #cabd9e;
+}
+
+
+/* ----------------------------------------
+   診断
+---------------------------------------- */
+
+.result-card[data-rarity="secret"] .diagnosis-section,
+.result-card[data-rarity="secret"] .diagnosis-section h3,
+.result-card[data-rarity="secret"] #diagnosis {
+  color: #e5d7ba;
+}
+
+
+/* ========================================
+   SECRET：FROM THE MASTER 紙片完成版
+======================================== */
+
+.result-card[data-rarity="secret"] .master-letter {
+  position: relative;
+
+  width: 95%;
+  height: 100%;
+
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+
+  /*
+    文字を紙の破れた端から離す
+  */
+  padding:
+    0
+    clamp(38px, 6vw, 64px);
+
+  /*
+    以前の四角い背景を完全削除
+  */
+  background: none;
+  border: 0;
+  box-shadow: none;
+  transform: none;
+
+  /*
+    紙片画像より文字を上へ
+  */
+  z-index: 1;
+
+  overflow: visible;
+
+  color: #342215;
+}
+
+
+/* ========================================
+   紙片PNG本体
+======================================== */
+
+.result-card[data-rarity="secret"] .master-letter::before {
+  content: "";
+
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  width: 100%;
+  height: auto;
+
+  aspect-ratio: 1800 / 320;
+
+  transform:
+    translate(-50%, -50%);
+
+  background-image:
+    url("../assets/images/master-note-secret.png");
+
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100% auto;
+
+  /* ★追加 */
+  background-color: rgba(70, 45, 20, .10);
+  background-blend-mode: multiply;
+
+  z-index: -1;
+
+  pointer-events: none;
+}
+
+
+/* 古い下線用疑似要素は使わない */
+.result-card[data-rarity="secret"] .master-letter::after {
+  content: none;
+  display: none;
+}
+
+
+/* ========================================
+   FROM THE MASTER
+======================================== */
+
+.result-card[data-rarity="secret"] .letter-label {
+  position: relative;
+  z-index: 2;
+
+  margin: 0 0 3px;
+
+ color: #ddb957;
+
+  font-size:
+    clamp(.48rem, .9vw, .64rem);
+
+  letter-spacing: .14em;
+}
+
+
+/* ========================================
+   鵜沢さんのセリフ
+======================================== */
+
+.result-card[data-rarity="secret"] #masterComment {
+  position: relative;
+  z-index: 2;
+
+  margin: 0;
+
+color: #f5f1ee;
+
+  font-size:
+    clamp(.60rem, 1.15vw, .82rem);
+
+  line-height: 1.5;
+}
+
+
+/* ========================================
+   スマホ
+======================================== */
+
+@media (max-width: 560px) {
+
+  .result-card[data-rarity="secret"] .master-letter {
+    width: 96%;
+
+    padding:
+      0
+      28px;
+  }
+
+  .result-card[data-rarity="secret"] .letter-label {
+    font-size: .44rem;
+    margin-bottom: 1px;
+  }
+
+  .result-card[data-rarity="secret"] #masterComment {
+    font-size: .56rem;
+    line-height: 1.35;
+  }
+}

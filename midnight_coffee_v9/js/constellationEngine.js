@@ -74,12 +74,13 @@
 
 
     /* ========================================
-       SECRETカード判定
+       レアリティ判定
     ======================================== */
 
-    const isSecret =
-      document.getElementById("resultCard")
-        ?.dataset.rarity === "secret";
+    const rarity = document.getElementById("resultCard")
+      ?.dataset.rarity || "normal";
+
+    const isFullMoon = rarity === "full_moon";
 
 
     /* ========================================
@@ -117,7 +118,7 @@
 
       ctx.beginPath();
 
-      ctx.fillStyle = isSecret
+      ctx.fillStyle = isFullMoon
         ? `rgba(
             214,
             174,
@@ -157,12 +158,12 @@
       }
     });
 
-    ctx.strokeStyle = isSecret
+    ctx.strokeStyle = isFullMoon
       ? "rgba(218, 178, 96, .82)"
       : "rgba(224, 205, 153, .62)";
 
     ctx.lineWidth =
-      isSecret
+      isFullMoon
         ? 1.25
         : 1;
 
@@ -192,21 +193,21 @@
 
       glow.addColorStop(
         0,
-        isSecret
+        isFullMoon
           ? "rgba(255, 232, 172, 1)"
           : "rgba(255, 246, 210, 1)"
       );
 
       glow.addColorStop(
         .25,
-        isSecret
+        isFullMoon
           ? "rgba(224, 177, 91, .92)"
           : "rgba(244, 222, 167, .82)"
       );
 
       glow.addColorStop(
         1,
-        isSecret
+        isFullMoon
           ? "rgba(224, 177, 91, 0)"
           : "rgba(244, 222, 167, 0)"
       );
@@ -231,7 +232,7 @@
       /* 星の中心 */
       ctx.beginPath();
 
-      ctx.fillStyle = isSecret
+      ctx.fillStyle = isFullMoon
         ? "#ffe0a3"
         : "#fff7dc";
 
@@ -247,10 +248,10 @@
 
 
       /* ========================================
-         SECRETだけ小さな十字光
+         FULL MOONだけ小さな十字光
       ======================================== */
 
-      if (isSecret && index % 3 === 0) {
+      if (isFullMoon && index % 3 === 0) {
         ctx.save();
 
         ctx.strokeStyle =

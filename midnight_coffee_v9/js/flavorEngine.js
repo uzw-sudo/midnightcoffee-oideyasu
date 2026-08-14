@@ -3,10 +3,10 @@
 (() => {
   const LABELS = [
     "香り",
-    "コク",
+    "苦み",
     "甘み",
     "酸味",
-    "余韻"
+    "コク"
   ];
 
 
@@ -28,18 +28,18 @@
 
     const keys = [
       "aroma",
-      "body",
+      "bitterness",
       "sweetness",
       "acidity",
-      "aftertaste"
+      "body"
     ];
 
     const japaneseKeys = [
       "香り",
-      "コク",
+      "苦み",
       "甘み",
       "酸味",
-      "余韻"
+      "コク"
     ];
 
     return keys.map((key, index) =>
@@ -149,11 +149,9 @@
         .getElementById("resultCard")
         ?.dataset.rarity || "normal";
 
-    const isRare =
-      rarity === "rare";
-
-    const isSecret =
-      rarity === "secret";
+    const isRare = rarity === "rare";
+    const isFullMoon = rarity === "full_moon";
+    const isSecret = rarity === "secret";
 
 
     ctx.lineJoin = "round";
@@ -173,8 +171,8 @@
     let resultLineWidth;
 
 
-    /* SECRET */
-    if (isSecret) {
+    /* FULL MOON */
+    if (isFullMoon) {
       gridColor =
         "rgba(218, 177, 94, .42)";
 
@@ -198,6 +196,18 @@
       resultLineWidth = 1.1;
     }
 
+
+    /* SECRET */
+    else if (isSecret) {
+      gridColor = "rgba(70, 45, 25, .26)";
+      axisColor = "rgba(70, 45, 25, .20)";
+      fillColor = "rgba(92, 55, 28, .16)";
+      strokeColor = "rgba(55, 31, 16, .88)";
+      labelColor = "rgba(48, 29, 17, .90)";
+      shadowColor = "transparent";
+      shadowBlur = 0;
+      resultLineWidth = 1.45;
+    }
 
     /* RARE */
     else if (isRare) {

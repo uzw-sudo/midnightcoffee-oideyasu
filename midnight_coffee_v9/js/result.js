@@ -10,7 +10,8 @@
   function canvases(){if(!current)return;window.renderFlavorChart?.(current);window.renderConstellation?.(current);}
   function presentation(card) {
   const p = card.presentation || {};
-  const isSecret = card.rarity === "secret";
+  const rarity = String(card.rarity || "normal").toLowerCase();
+  const isSpecial = ["rare", "full_moon", "secret"].includes(rarity);
 
   /* 紙 */
   image(
@@ -19,8 +20,8 @@
     "../assets/images/card-paper.png"
   );
 
-  /* SECRETだけ染み・枠を非表示 */
-  if (isSecret) {
+  /* 専用カード画像には染み・通常枠を重ねない */
+  if (isSpecial) {
 
     if (el.stain) {
       el.stain.removeAttribute("src");
@@ -56,7 +57,7 @@
 
   if (el.card) {
     el.card.dataset.rarity =
-      card.rarity || "normal";
+      rarity;
 
     el.card.dataset.effect =
       p.effect || "none";
@@ -67,12 +68,20 @@
       requestAnimationFrame(() => {
         el.card.classList.add("is-ready");
 
-        if (card.rarity === "secret") {
+        if (rarity === "secret") {
           setTimeout(
             () => window.MidnightNightSky?.burst(3, 230),
             420
           );
-        } else if (card.rarity === "rare") {
+        } else if (rarity === "full_moon") {
+          setTimeout(
+            () => {
+              window.MidnightNightSky?.shoot();
+              window.MidnightNightSky?.burst?.(2, 180);
+            },
+            480
+          );
+        } else if (rarity === "rare") {
           setTimeout(
             () => window.MidnightNightSky?.shoot(),
             520
@@ -94,7 +103,7 @@
     /*
       ========================================
       SECRET ROUTE
-      M-019「店主の気まぐれ」
+      M-030「店主の気まぐれ」
       ========================================
       
       q1 少し、疲れてしまった       → 0
@@ -116,7 +125,7 @@
 
     const forced =
       isSecretRoute
-        ? "M-019"
+        ? "M-030"
         : stored && cards.find(c => c.id === stored)
           ? stored
           : null;
@@ -157,3 +166,18 @@
 }
   el.shareButton?.addEventListener("click",share);window.addEventListener("resize",()=>{clearTimeout(resizeTimer);resizeTimer=setTimeout(canvases,120)},{passive:true});document.addEventListener("DOMContentLoaded",init);
 })();
+/* ========================================
+   もう一杯注文する
+======================================== */
+
+const orderAgainButton =
+  document.getElementById("orderAgainButton");
+
+if (orderAgainButton) {
+  orderAgainButton.addEventListener(
+    "click",
+    () => {
+      window.location.href = "../menu/index.html";
+    }
+  );
+}

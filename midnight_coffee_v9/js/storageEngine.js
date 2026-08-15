@@ -5,5 +5,6 @@
   function set(storage,key,value){ try { storage.setItem(key,JSON.stringify(value)); return true; } catch { return false; } }
   function orderNumber(){ let n=sessionStorage.getItem(KEYS.order); if(!n){ n=String(Math.floor(100000+Math.random()*900000)); sessionStorage.setItem(KEYS.order,n); } return n; }
   function resetDiagnosis(){ [KEYS.score,KEYS.answers,KEYS.card,KEYS.variants].forEach(k=>localStorage.removeItem(k)); }
-  window.MidnightStorage={ KEYS, getScore:()=>parse(localStorage,KEYS.score,{}), setScore:v=>set(localStorage,KEYS.score,v), getAnswers:()=>parse(localStorage,KEYS.answers,[]), setAnswers:v=>set(localStorage,KEYS.answers,v), getCardId:()=>localStorage.getItem(KEYS.card), setCardId:v=>localStorage.setItem(KEYS.card,String(v||"")), getVariants:()=>parse(localStorage,KEYS.variants,{}), setVariants:v=>set(localStorage,KEYS.variants,v), orderNumber, resetDiagnosis };
+  function resetOrderNumber(){ sessionStorage.removeItem(KEYS.order); }
+  window.MidnightStorage={ KEYS, getScore:()=>parse(localStorage,KEYS.score,{}), setScore:v=>set(localStorage,KEYS.score,v), getAnswers:()=>parse(localStorage,KEYS.answers,[]), setAnswers:v=>set(localStorage,KEYS.answers,v), getCardId:()=>localStorage.getItem(KEYS.card), setCardId:v=>localStorage.setItem(KEYS.card,String(v||"")), getVariants:()=>parse(localStorage,KEYS.variants,{}), setVariants:v=>set(localStorage,KEYS.variants,v), orderNumber, resetDiagnosis, resetOrderNumber };
 })();

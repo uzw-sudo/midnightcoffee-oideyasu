@@ -100,6 +100,12 @@
     const stored=MidnightStorage.getCardId();
     const answers=MidnightStorage.getAnswers?.() || [];
 
+    // デバッグ用: ?result=M-015 のように指定すると、そのカードを直接表示できます。
+    const requestedId = new URLSearchParams(location.search).get("result");
+    const debugForcedId = requestedId && cards.some(c => c.id === requestedId)
+      ? requestedId
+      : null;
+
     /*
       ========================================
       SECRET ROUTE
@@ -124,11 +130,13 @@
       );
 
     const forced =
-      isSecretRoute
-        ? "M-030"
-        : stored && cards.find(c => c.id === stored)
-          ? stored
-          : null;
+      debugForcedId
+        ? debugForcedId
+        : isSecretRoute
+          ? "M-030"
+          : stored && cards.find(c => c.id === stored)
+            ? stored
+            : null;
 
     const chosen=MidnightCardEngine.select(
       cards,
@@ -177,6 +185,9 @@ if (orderAgainButton) {
   orderAgainButton.addEventListener(
     "click",
     () => {
+      // 「もう一杯」は新しい注文として扱い、抽選用の注文番号も更新する。
+      MidnightStorage.resetOrderNumber?.();
+      MidnightStorage.resetDiagnosis?.();
       window.location.href = "../menu/index.html";
     }
   );

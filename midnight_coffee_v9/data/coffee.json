@@ -17,7 +17,15 @@
     "comment": "えらく肩に力が入ってるなぁ？珈琲は逃げん……つか、ちゃんと寝てるか？",
     "dessert": "バウムクーヘン",
     "luckyItem": "古い万年筆",
-    "constellation": "月冠座"
+    "constellation": "月冠座",
+    "selection": {
+      "target": {
+        "tired": 13,
+        "happy": 2,
+        "quiet": 18,
+        "energy": 2
+      }
+    }
   },
   {
     "id": "M-002",
@@ -37,7 +45,15 @@
     "comment": "何でも一人で抱えんなよ？ほら、今日は少し甘めにしといたぜ。",
     "dessert": "ミルククッキー",
     "luckyItem": "白いハンカチ",
-    "constellation": "三日月座"
+    "constellation": "三日月座",
+    "selection": {
+      "target": {
+        "tired": 10,
+        "happy": 6,
+        "quiet": 15,
+        "energy": 4
+      }
+    }
   },
   {
     "id": "M-003",
@@ -57,7 +73,15 @@
     "comment": "雨の日はさ、無理に進まなくてもいいんだよ。屋根くらい貸すからさ？な？",
     "dessert": "ガトーショコラ",
     "luckyItem": "小さな折りたたみ傘",
-    "constellation": "雨雲座"
+    "constellation": "雨雲座",
+    "selection": {
+      "target": {
+        "tired": 12,
+        "happy": 2,
+        "quiet": 18,
+        "energy": 1
+      }
+    }
   },
   {
     "id": "M-004",
@@ -77,7 +101,15 @@
     "comment": "頭ん中、ちょっと熱持ってるなぁ？ 冷たいの飲んで、夜風に当たってこい。",
     "dessert": "レモンサブレ",
     "luckyItem": "銀色の鍵",
-    "constellation": "涼風座"
+    "constellation": "涼風座",
+    "selection": {
+      "target": {
+        "tired": 7,
+        "happy": 6,
+        "quiet": 10,
+        "energy": 9
+      }
+    }
   },
   {
     "id": "M-005",
@@ -97,7 +129,15 @@
     "comment": "まだやる気かぁ？ ……止めはせんが、終わる時間くらい決めとけよ。",
     "dessert": "ビターチョコレート",
     "luckyItem": "古びた腕時計",
-    "constellation": "夜更け座"
+    "constellation": "夜更け座",
+    "selection": {
+      "target": {
+        "tired": 8,
+        "happy": 4,
+        "quiet": 6,
+        "energy": 15
+      }
+    }
   },
   {
     "id": "M-006",
@@ -117,7 +157,15 @@
     "comment": "甘いのも悪くないだろ？ たまには素直に『うまい』って顔しとけ。",
     "dessert": "フィナンシェ",
     "luckyItem": "蜂蜜色の小瓶",
-    "constellation": "蜜星座"
+    "constellation": "蜜星座",
+    "selection": {
+      "target": {
+        "tired": 5,
+        "happy": 16,
+        "quiet": 8,
+        "energy": 7
+      }
+    }
   },
   {
     "id": "M-007",
@@ -137,7 +185,15 @@
     "comment": "先が見えない？ そりゃ夜だしな？足元が見えてりゃ十分だろ。",
     "dessert": "白いロールケーキ",
     "luckyItem": "曇りガラスのビー玉",
-    "constellation": "霧灯座"
+    "constellation": "霧灯座",
+    "selection": {
+      "target": {
+        "tired": 9,
+        "happy": 4,
+        "quiet": 16,
+        "energy": 6
+      }
+    }
   },
   {
     "id": "M-008",
@@ -157,7 +213,15 @@
     "comment": "派手じゃないけど、こういうのが落ち着く日もあるよな？",
     "dessert": "きなこ餅",
     "luckyItem": "木のスプーン",
-    "constellation": "黒糖座"
+    "constellation": "黒糖座",
+    "selection": {
+      "target": {
+        "tired": 7,
+        "happy": 10,
+        "quiet": 15,
+        "energy": 3
+      }
+    }
   },
   {
     "id": "M-009",
@@ -177,7 +241,15 @@
     "comment": "……その顔。これ、ちょっと気になってただろ？楽しんでくれな？",
     "dessert": "星形メレンゲ",
     "luckyItem": "透明なストロー",
-    "constellation": "星屑座"
+    "constellation": "星屑座",
+    "selection": {
+      "target": {
+        "tired": 2,
+        "happy": 18,
+        "quiet": 4,
+        "energy": 16
+      }
+    }
   },
   {
     "id": "M-010",
@@ -197,7 +269,15 @@
     "comment": "甘いだけじゃ飽きるだろ？ 人も珈琲も、少しくらい癖があった方が面白い。",
     "dessert": "キャラメルナッツ",
     "luckyItem": "海塩の小袋",
-    "constellation": "潮星座"
+    "constellation": "潮星座",
+    "selection": {
+      "target": {
+        "tired": 8,
+        "happy": 9,
+        "quiet": 10,
+        "energy": 8
+      }
+    }
   },
   {
     "id": "M-011",
@@ -217,7 +297,15 @@
     "comment": "ちょっと変わってる？ だからいいんだろ？当たり前だけが正解じゃないさ。",
     "dessert": "柚子ピールチョコ",
     "luckyItem": "黄色い糸",
-    "constellation": "柚月座"
+    "constellation": "柚月座",
+    "selection": {
+      "target": {
+        "tired": 4,
+        "happy": 10,
+        "quiet": 7,
+        "energy": 13
+      }
+    }
   },
   {
     "id": "M-012",
@@ -237,7 +325,15 @@
     "comment": "ピリっとするだろ？ ……その違和感、大事にしとけ。勘って案外馬鹿にできんよ。",
     "dessert": "チョコテリーヌ",
     "luckyItem": "小さな鈴",
-    "constellation": "山椒座"
+    "constellation": "山椒座",
+    "selection": {
+      "target": {
+        "tired": 4,
+        "happy": 8,
+        "quiet": 8,
+        "energy": 15
+      }
+    }
   },
   {
     "id": "M-013",
@@ -257,7 +353,15 @@
     "comment": "急いで決めることでもないさ。珈琲だって、時間かけた方がうまい時もある。",
     "dessert": "アーモンドビスコッティ",
     "luckyItem": "青いガラス瓶",
-    "constellation": "月影座"
+    "constellation": "月影座",
+    "selection": {
+      "target": {
+        "tired": 5,
+        "happy": 5,
+        "quiet": 19,
+        "energy": 4
+      }
+    }
   },
   {
     "id": "M-014",
@@ -277,7 +381,15 @@
     "comment": "眠れないからって、余計に目ぇ覚ますもん飲むなよ。今日はこっち。",
     "dessert": "カモミールクッキー",
     "luckyItem": "柔らかい靴下",
-    "constellation": "眠月座"
+    "constellation": "眠月座",
+    "selection": {
+      "target": {
+        "tired": 18,
+        "happy": 2,
+        "quiet": 17,
+        "energy": 0
+      }
+    }
   },
   {
     "id": "M-015",
@@ -297,7 +409,15 @@
     "comment": "考えすぎだ。ほら、一口飲んだら一個だけやれ。全部じゃなくていい。",
     "dessert": "カカオニブクッキー",
     "luckyItem": "黒いボールペン",
-    "constellation": "雷星座"
+    "constellation": "雷星座",
+    "selection": {
+      "target": {
+        "tired": 2,
+        "happy": 8,
+        "quiet": 4,
+        "energy": 20
+      }
+    }
   },
   {
     "id": "M-016",
@@ -317,7 +437,15 @@
     "comment": "待つの苦手か？ まあ分かるけどな。でもまぁ今日は追わなくていいんじゃねぇか？",
     "dessert": "シフォンケーキ",
     "luckyItem": "小さな砂時計",
-    "constellation": "宵待座"
+    "constellation": "宵待座",
+    "selection": {
+      "target": {
+        "tired": 6,
+        "happy": 7,
+        "quiet": 18,
+        "energy": 3
+      }
+    }
   },
   {
     "id": "M-017",
@@ -337,7 +465,15 @@
     "comment": "ご褒美は何にする？楽しみがないと頑張れない日もあるよな。",
     "dessert": "琥珀糖",
     "luckyItem": "透明な小箱",
-    "constellation": "琥珀座"
+    "constellation": "琥珀座",
+    "selection": {
+      "target": {
+        "tired": 3,
+        "happy": 17,
+        "quiet": 7,
+        "energy": 11
+      }
+    }
   },
   {
     "id": "M-018",
@@ -357,7 +493,15 @@
     "comment": "どっか行きたい顔してるな。……地図でも眺めながら飲むか？",
     "dessert": "固めのプリン",
     "luckyItem": "古い切符",
-    "constellation": "汽笛座"
+    "constellation": "汽笛座",
+    "selection": {
+      "target": {
+        "tired": 3,
+        "happy": 11,
+        "quiet": 7,
+        "energy": 16
+      }
+    }
   },
   {
     "id": "M-019",
@@ -377,7 +521,15 @@
     "comment": "隣のカップ見ても味は分からんよ？己の持ち味を生かしていこうぜ？",
     "dessert": "ミルクレープ",
     "luckyItem": "銀色のクリップ",
-    "constellation": "銀河座"
+    "constellation": "銀河座",
+    "selection": {
+      "target": {
+        "tired": 7,
+        "happy": 8,
+        "quiet": 16,
+        "energy": 5
+      }
+    }
   },
   {
     "id": "M-020",
@@ -397,7 +549,15 @@
     "comment": "終わらせるのも仕事のうちだぜ。閉めた扉があるから、次を開けられるってな？",
     "dessert": "ショコラサンド",
     "luckyItem": "使い切ったノート",
-    "constellation": "薄明座"
+    "constellation": "薄明座",
+    "selection": {
+      "target": {
+        "tired": 8,
+        "happy": 5,
+        "quiet": 12,
+        "energy": 11
+      }
+    }
   },
   {
     "id": "M-021",
@@ -417,7 +577,15 @@
     "comment": "気ぃ使いすぎると、お前らしさ消えるぜ？普通でいい、普通で。",
     "dessert": "ナッツタルト",
     "luckyItem": "葉っぱの栞",
-    "constellation": "木漏月座"
+    "constellation": "木漏月座",
+    "selection": {
+      "target": {
+        "tired": 4,
+        "happy": 11,
+        "quiet": 13,
+        "energy": 8
+      }
+    }
   },
   {
     "id": "M-022",
@@ -437,7 +605,15 @@
     "comment": "連絡しようか迷ってんのか？ 迷うくらいなら一言送っとけ。",
     "dessert": "シナモンロール",
     "luckyItem": "橙色の灯り",
-    "constellation": "灯火座"
+    "constellation": "灯火座",
+    "selection": {
+      "target": {
+        "tired": 3,
+        "happy": 16,
+        "quiet": 6,
+        "energy": 12
+      }
+    }
   },
   {
     "id": "M-023",
@@ -457,7 +633,15 @@
     "comment": "残そうとしすぎると、見逃すぞ。今は目の前をちゃんと見とけ。",
     "dessert": "桜餅",
     "luckyItem": "薄桃色の紙片",
-    "constellation": "夜桜座"
+    "constellation": "夜桜座",
+    "selection": {
+      "target": {
+        "tired": 4,
+        "happy": 16,
+        "quiet": 12,
+        "energy": 8
+      }
+    }
   },
   {
     "id": "M-024",
@@ -477,7 +661,15 @@
     "comment": "……お、今見えたか？ 願い事しとけよ。三回は言えなくても、一回くらいなら間に合うだろ？",
     "dessert": "金平糖",
     "luckyItem": "星形のチャーム",
-    "constellation": "流星座"
+    "constellation": "流星座",
+    "selection": {
+      "target": {
+        "tired": 2,
+        "happy": 14,
+        "quiet": 7,
+        "energy": 18
+      }
+    }
   },
   {
     "id": "M-025",
@@ -497,7 +689,15 @@
     "comment": "真っ暗だな？ だが、新月ってのは何もないんじゃない。これから満ちる途中ってな。",
     "dessert": "黒胡麻サブレ",
     "luckyItem": "黒い封筒",
-    "constellation": "新月座"
+    "constellation": "新月座",
+    "selection": {
+      "target": {
+        "tired": 11,
+        "happy": 3,
+        "quiet": 20,
+        "energy": 2
+      }
+    }
   },
   {
     "id": "M-026",
@@ -517,7 +717,15 @@
     "comment": "冷たいのと熱いの、一緒でもうまいだろ？ 気持ちも似たようなもんだ。",
     "dessert": "バニラアイス",
     "luckyItem": "二色のリボン",
-    "constellation": "宵星座"
+    "constellation": "宵星座",
+    "selection": {
+      "target": {
+        "tired": 9,
+        "happy": 9,
+        "quiet": 12,
+        "energy": 8
+      }
+    }
   },
   {
     "id": "M-027",
@@ -537,7 +745,15 @@
     "comment": "隠してるつもりでも顔に出てるぜ？……溜め込むよりは吐き出せよ？俺がいる。",
     "dessert": "ベリーショコラ",
     "luckyItem": "赤いガラス玉",
-    "constellation": "月蝕座"
+    "constellation": "月蝕座",
+    "selection": {
+      "target": {
+        "tired": 12,
+        "happy": 7,
+        "quiet": 13,
+        "energy": 5
+      }
+    }
   },
   {
     "id": "M-028",
@@ -557,7 +773,15 @@
     "comment": "日付、変わったぜ？昨日のことは昨日に置いてけ。持って帰るには重いだろ。",
     "dessert": "時計型クッキー",
     "luckyItem": "日付の変わったレシート",
-    "constellation": "零時座"
+    "constellation": "零時座",
+    "selection": {
+      "target": {
+        "tired": 4,
+        "happy": 10,
+        "quiet": 7,
+        "energy": 18
+      }
+    }
   },
   {
     "id": "M-029",
@@ -577,7 +801,15 @@
     "comment": "…………へぇ。お前これ引くのかぁ。いや、なんでもない。……冷める前に飲めよ。",
     "dessert": "月型バウムクーヘン",
     "luckyItem": "満月のコイン",
-    "constellation": "満月座"
+    "constellation": "満月座",
+    "selection": {
+      "target": {
+        "tired": 2,
+        "happy": 20,
+        "quiet": 10,
+        "energy": 14
+      }
+    }
   },
   {
     "id": "M-030",
@@ -597,6 +829,14 @@
     "comment": "名前？ ないよ。今日のお前見て適当に淹れただけ。……そういうのも、たまにはいいだろ？",
     "dessert": "焼きたてクロワッサン",
     "luckyItem": "名前のない紙片",
-    "constellation": "名無し座"
+    "constellation": "名無し座",
+    "selection": {
+      "target": {
+        "tired": 10,
+        "happy": 10,
+        "quiet": 10,
+        "energy": 10
+      }
+    }
   }
 ]

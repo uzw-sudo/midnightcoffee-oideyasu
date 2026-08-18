@@ -945,11 +945,11 @@ button {
 }
 
 .result-card[data-rarity="secret"] #constellationName {
-  color: #e7cf9a;
+  color: #f2d88a;
 }
 
 .result-card[data-rarity="secret"] #constellationText {
-  color: #cabd9e;
+  color: #e7ddc6;
 }
 
 
